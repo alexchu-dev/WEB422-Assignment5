@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 
-export default function advancedSearch() {
+export default function AdvancedSearch() {
   const router = useRouter()
   //This form is using React-Hook-Form to register the values and handle the form. formState is used so that it gives access to the errors in the form
   const {

@@ -14,11 +14,6 @@ import validObjectIDList from "@/public/data/validObjectIDList.json"
 
 const PER_PAGE = 12
 
-// Filter the search result to avoid the "not a valid object" case from the museum.
-let filteredResults = validObjectIDList.objectIDs.filter((x) =>
-  data.objectIDs?.includes(x)
-)
-
 export default function Artwork() {
   const [artworkList, setArtworkList] = useState(null)
   const [page, setPage] = useState(1)
@@ -51,6 +46,11 @@ export default function Artwork() {
   useEffect(() => {
     if (data) {
       let results = []
+      // Filter the search result to avoid the "not a valid object" case from the museum.
+      let filteredResults = validObjectIDList.objectIDs.filter((x) =>
+  data.objectIDs?.includes(x)
+)
+
       for (let i = 0; i < filteredResults.length; i += PER_PAGE) {
         const chunk = filteredResults.slice(i, i + PER_PAGE)
         results.push(chunk)

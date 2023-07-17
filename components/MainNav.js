@@ -21,7 +21,7 @@ export default function MainNav() {
 
   return (
     <>
-      <Navbar bg="primary" data-bs-theme="light" expand="lg">
+      <Navbar bg="secondary" data-bs-theme="light" expand="lg" expanded="false">
         <Container>
           <Navbar.Brand>
             <Link href="https://alexchu.dev" passHref legacyBehavior>

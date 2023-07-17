@@ -48,8 +48,8 @@ export default function Artwork() {
       let results = []
       // Filter the search result to avoid the "not a valid object" case from the museum.
       let filteredResults = validObjectIDList.objectIDs.filter((x) =>
-  data.objectIDs?.includes(x)
-)
+        data.objectIDs?.includes(x)
+      )
 
       for (let i = 0; i < filteredResults.length; i += PER_PAGE) {
         const chunk = filteredResults.slice(i, i + PER_PAGE)

@@ -14,30 +14,46 @@ export default function MainNav() {
   const router = useRouter()
   //This form is using Controlled Component with useState. To see the demonstration of using React-Hook-Form, please check /pages/search.js
   const [keyword, setKeyword] = useState("")
+  const [isExpanded, setIsExpanded] = useState(false)
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded)
+  }
   function submitForm(e) {
     e.preventDefault()
+    setIsExpanded(false)
     router.push(`/artwork?title=true&q=${keyword}`)
   }
 
   return (
     <>
-      <Navbar bg="secondary" data-bs-theme="light" expand="lg">
+      <Navbar
+        bg="secondary"
+        data-bs-theme="light"
+        expand="lg"
+        expanded={isExpanded}
+      >
         <Container>
           <Navbar.Brand>
             <Link href="https://alexchu.dev" passHref legacyBehavior>
-              <Nav.Link>Alex Chu</Nav.Link>
+              <Nav.Link onClick={() => setIsExpanded(false)}>Alex Chu</Nav.Link>
             </Link>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={toggleExpand}
+          />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Link href="/" passHref legacyBehavior>
-                <Nav.Link>Home</Nav.Link>
+                <Nav.Link onClick={() => setIsExpanded(false)}>Home</Nav.Link>
               </Link>
               <Link href="/search" passHref legacyBehavior>
-                <Nav.Link>Advanced Search</Nav.Link>
+                <Nav.Link onClick={() => setIsExpanded(false)}>
+                  Advanced Search
+                </Nav.Link>
               </Link>
             </Nav>
+            &nbsp;
             <Form className="d-flex" onSubmit={submitForm}>
               <Form.Control
                 type="search"
@@ -46,10 +62,15 @@ export default function MainNav() {
                 aria-label="Search"
                 onChange={(e) => setKeyword(e.target.value)}
               />
-              <Button type="submit" variant="secondary">
+              <Button
+                type="submit"
+                variant="secondary"
+                onClick={() => setIsExpanded(false)}
+              >
                 Search
               </Button>
             </Form>
+            &nbsp;
           </Navbar.Collapse>
         </Container>
       </Navbar>

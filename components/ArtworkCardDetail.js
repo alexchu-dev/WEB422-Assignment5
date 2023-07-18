@@ -5,6 +5,9 @@ import useSWR from "swr"
 import Error from "next/error"
 import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
+import { useState } from "react"
+import { useAtom } from "jotai"
+import { favouritesAtom } from "@/store"
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -13,7 +16,8 @@ export default function ArtworkCardDetail({ objectID }) {
     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
     fetcher
   )
-
+  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom)
+  // const [showAdded, setShowAdded] = useState(true)
   if (error) {
     return <Error statusCode={404} />
   } else if (!data) {

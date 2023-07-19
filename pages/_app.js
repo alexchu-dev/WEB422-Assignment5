@@ -1,4 +1,4 @@
-import "bootswatch/dist/litera/bootstrap.min.css"
+import "bootswatch/dist/minty/bootstrap.min.css"
 import "@/styles/globals.css"
 
 import Layout from "@/components/Layout"

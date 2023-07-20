@@ -1,26 +1,24 @@
 /**************************************************************************************
  *  WEB422 – Assignment 4   Name: Alex Chu    Student ID: 153954219   Date: 2 Jul 2023
  *************************************************************************************/
-import useSWR from "swr"
-import Error from "next/error"
-import Link from "next/link"
-import Button from "react-bootstrap/Button"
-import Card from "react-bootstrap/Card"
+import useSWR from "swr";
+import Error from "next/error";
+import Link from "next/link";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-const placeholder = `https://via.placeholder.com/375x375.png?text=[+Not+Available+]`
+const placeholder = `https://via.placeholder.com/375x375.png?text=[+Not+Available+]`;
 
 export default function ArtworkCard({ objectID }) {
   const { data, error } = useSWR(
-    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
-    fetcher
-  )
+    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`
+  );
   if (error) {
-    return <Error statusCode={404} />
+    return <Error statusCode={404} />;
   }
 
   if (!data) {
-    return null
+    return null;
   }
 
   return (
@@ -50,5 +48,5 @@ export default function ArtworkCard({ objectID }) {
         </Card.Text>
       </Card.Body>
     </Card>
-  )
+  );
 }

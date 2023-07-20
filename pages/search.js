@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
+import { useAtom } from "jotai"
+import { searchHistoryAtom } from "@/store"
 
 export default function AdvancedSearch() {
   const router = useRouter()
@@ -17,6 +19,9 @@ export default function AdvancedSearch() {
     formState: { errors },
   } = useForm()
   let queryString = ""
+
+  // Getting a reference to the searchHistory from searchHistoryAtom
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom)
 
   //submitForm function to handle the queryString and pass to router
   const submitForm = (data) => {
@@ -32,6 +37,10 @@ export default function AdvancedSearch() {
       `&isHighlight=${isHighlight}` +
       `&q=${q}`
 
+    // Add the computed queryString value to the searchHistory
+    setSearchHistory((current) => [...current, queryString])
+
+    // Finally, using Router to return the artwork in query
     router.push(`/artwork?${queryString}`)
   }
   return (

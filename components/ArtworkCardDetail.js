@@ -1,40 +1,45 @@
 /**************************************************************************************
  *  WEB422 – Assignment 4   Name: Alex Chu    Student ID: 153954219   Date: 2 Jul 2023
  *************************************************************************************/
-import useSWR from "swr";
-import Error from "next/error";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { useState } from "react";
+import useSWR from "swr"
+import Error from "next/error"
+import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
+import { useState } from "react"
 // Import useAtom hook from Jotai and the favouritesAtom declared in the other module.
-import { useAtom } from "jotai";
-import { favouritesAtom } from "@/store";
+import { useAtom } from "jotai"
+import { favouritesAtom } from "@/store"
+import { useEffect } from "react"
 
+// In Next.js, we can use import SWR from client components and allow us to use the SWR  client data fetching hooks. Stale-while-revalidate is a strategy to return the data from cache(stale), then send the fetch request (revalidate) and finally come with the up-to-date data.
 export default function ArtworkCardDetail({ objectID }) {
   const { data, error } = useSWR(
     objectID
       ? `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`
       : null
-  );
+  )
   // Get a reference from favouritesAtom in the store.js
-  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
+  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom)
 
   // Manipulate the showAdded true false state if the objectID is included
-  const [showAdded, setShowAdded] = useState(favouritesList.includes(objectID));
+  const [showAdded, setShowAdded] = useState(favouritesList.includes(objectID))
 
   // To be invoked when the button is clicked
   const favouritesClicked = () => {
     if (showAdded) {
-      setFavouritesList((current) => current.filter((fav) => fav != objectID));
-      setShowAdded(false);
+      setFavouritesList((current) => current.filter((fav) => fav != objectID))
+      setShowAdded(false)
     } else {
-      setFavouritesList((current) => [...current, objectID]);
-      setShowAdded(true);
+      setFavouritesList((current) => [...current, objectID])
+      setShowAdded(true)
     }
-  };
-
+  }
+  // Setting side effect to debug
+  useEffect(() => {
+    console.log(favouritesList)
+  })
   if (error) {
-    return <Error statusCode={404} />;
+    return <Error statusCode={404} />
   }
 
   if (data) {
@@ -95,8 +100,8 @@ export default function ArtworkCardDetail({ objectID }) {
           </Button>
         </Card.Body>
       </Card>
-    );
+    )
   } else {
-    return null;
+    return null
   }
 }

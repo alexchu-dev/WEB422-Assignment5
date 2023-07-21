@@ -6,8 +6,7 @@ import Card from "react-bootstrap/Card"
 import ArtworkCard from "@/components/ArtworkCard"
 
 export default function Favourite() {
-  // Getting a reference to the favouriteList from favouritesAtom
-  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom)
+  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom) // Getting a reference to the favouriteList from favouritesAtom
 
   return (
     <>

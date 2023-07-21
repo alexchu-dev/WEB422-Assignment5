@@ -1,11 +1,11 @@
 /*********************************************************************************
- *  WEB422 – Assignment 4
+ *  WEB422 – Assignment 5
  *  I declare that this assignment is my own work in accordance with Seneca Academic Policy.
  *  No part of this assignment has been copied manually or electronically from any other source
  *  (including web sites) or distributed to other students.
  *
- *  Name: Alex Chu    Student ID: 153954219   Date: 2 Jul 2023
- *  Demo: https://alexchu-web422-a4.vercel.app
+ *  Name: Alex Chu    Student ID: 153954219   Date: 20 Jul 2023
+ *  Demo: https://alexchu-web422-a5.vercel.app
  ********************************************************************************/
 import { Image } from "react-bootstrap"
 import Row from "react-bootstrap/Row"

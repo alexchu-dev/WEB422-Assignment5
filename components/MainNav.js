@@ -31,7 +31,7 @@ export default function MainNav() {
     e.preventDefault()
     setIsExpanded(false)
     // Add the computed queryString value to the searchHistory
-    let queryString = `title=true&q=${keyword}`
+    let queryString = `title=true?&q=${keyword}`
     setSearchHistory((current) => [...current, queryString])
     router.push(`/artwork?title=true&q=${keyword}`)
   }

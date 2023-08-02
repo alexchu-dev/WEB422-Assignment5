@@ -49,7 +49,7 @@ export default function SearchHistory() {
             <ListGroup.Item
               key={index}
               onClick={(e) => historyClicked(e, index)}
-              className="{styles.historyListItem}"
+              className={styles.historyListItem}
             >
               {" "}
               {Object.keys(historyItem).map((key) => (

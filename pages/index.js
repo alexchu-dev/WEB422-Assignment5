@@ -5,7 +5,7 @@
  *  (including web sites) or distributed to other students.
  *
  *  Name: Alex Chu    Student ID: 153954219   Date: 20 Jul 2023
- *  Demo: https://alexchu-web422-a5.vercel.app
+ *  Demo: https://alexchu-web422-a5.vercel.app/
  ********************************************************************************/
 import { Image } from "react-bootstrap"
 import Row from "react-bootstrap/Row"
